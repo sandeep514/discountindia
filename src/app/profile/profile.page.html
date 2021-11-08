@@ -1,0 +1,74 @@
+<ion-header>
+		<ion-toolbar class="bg-img">
+			<ion-buttons slot="start">
+					<ion-menu-button></ion-menu-button>
+
+				<ion-back-button></ion-back-button>
+			  </ion-buttons>
+		  <ion-row>
+			<ion-col>
+			  <p class="text-deal">Profile</p>
+			</ion-col>
+		  </ion-row>
+		</ion-toolbar>
+	  </ion-header>
+	<ion-content class="bg-img">
+		<ion-row class="profile">
+			<ion-col class="ion-text-center"> 
+				<ion-icon name="contact"></ion-icon>
+				<h5 class="ion-no-margin" *ngIf="hasCustomer == false || UserProfileData == undefined || UserProfileData.status == null || UserProfileData.status == 0"> Customer Id : Not Alloted</h5>
+				<h5 class="ion-no-margin" *ngIf="UserProfileData != undefined && UserProfileData.status != null && UserProfileData.status != 0 && hasCustomer != false && UserProfileData.plan != undefined"> Customer Id :  {{ UserProfileData.customer_unique_id }} ( Plan: {{ UserProfileData.plan.title }} ) </h5>
+				<!-- <h5 class="ion-no-margin" *ngIf="UserProfileData != undefined && UserProfileData.status != null && UserProfileData.status != 0 && hasCustomer != false"> Current Plan :  {{ UserProfileData.plan.title }} </h5> -->
+				<a href="javascript:;" (click)="logout()">Logout</a>
+			</ion-col>
+		</ion-row>
+	   <form class="m-form">
+				<ion-item class="email">
+				<!-- <ion-label> User Name </ion-label> -->
+				<!-- <ion-label position="floating"> User Name </ion-label> -->
+			<ion-input *ngIf="UserProfileData != undefined" disabled="true"  > {{ UserProfileData.name }}</ion-input>
+				<ion-icon item-right name="person"></ion-icon>
+			</ion-item>
+			<ion-item class="email">
+				<!-- <ion-label> Mobile Number </ion-label> -->
+				<!-- <ion-label position="floating"> Mobile Number </ion-label> -->
+			<ion-input *ngIf="UserProfileData != undefined" disabled="true" >{{ UserProfileData.mobile }}</ion-input>
+				<ion-icon item-right name="phone-portrait"></ion-icon>
+			</ion-item>
+			<ion-item class="email">
+				<!-- <ion-label> Email Id</ion-label> -->
+				<!-- <ion-label position="floating"> Email Id</ion-label> -->
+				<ion-input *ngIf="UserProfileData != undefined" disabled="true" >{{ UserProfileData.email }}</ion-input>
+				<ion-icon item-right name="mail"></ion-icon>
+			</ion-item>
+			<ion-item class="email" *ngIf="UserProfileData != undefined && UserProfileData.expired_on != null">
+				Expired On: 
+				<ion-input *ngIf="UserProfileData != undefined" disabled="true" >{{ UserProfileData.expired_on }}</ion-input>
+			</ion-item>
+	  </form>
+		<!-- <div class="ion-margin-bottom ion-padding-horizontal">
+			<ion-button size="medium" expand="block" disable-hover>Update</ion-button>
+		</div> -->
+		<!-- <ion-row class="outline">
+		  <ion-col size="10">
+			  <h6 class="ion-no-margin">CHAT WITH US</h6>
+			  <p class="ion-no-margin">www.abc@gmail.com</p>
+		  </ion-col>
+		  <ion-col size="2">
+			  <ion-icon class="ion-text-end" name="chatbubbles"></ion-icon>
+		  </ion-col>
+		</ion-row> -->
+		<ion-row class="outline">
+			<ion-col size="10">
+				<h6 class="ion-no-margin">CUSTOMER SUPPORT</h6>
+				<p class="ion-no-margin">call: <a href="tel:+916283856101">+9162838-56101</a> OR <a href="tel:+918427138252">+9184271-38252</a></p>
+			</ion-col>
+			<ion-col size="2">
+				<ion-icon class="ion-text-end" name="call"></ion-icon>
+			</ion-col>
+		</ion-row>
+	   <footer>
+			<p text-center> ⓒ All Days Deal Pvt.Ltd.</p>
+		</footer>
+	</ion-content>
+<app-footer-tabs></app-footer-tabs>

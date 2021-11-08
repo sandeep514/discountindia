@@ -1,0 +1,64 @@
+<ion-header>
+	<ion-toolbar class="bg-img">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-row>
+			<ion-col>
+				<p class="text-deal">Vouchers</p>
+			</ion-col>
+		</ion-row>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ng-container *ngIf="voucherDetailsLength != 0">
+		<ion-list>
+			<ng-container *ngFor=" let VR of voucherDetails ">
+				<ion-item *ngIf=" VR.voucher_details != null ">
+					<!-- {{ VR.voucher_details.offer.title | json }} -->
+					 <ion-label>
+						<ion-row>
+							<ion-col size="9">
+								<h2>{{ VR.voucher_details.offer.title }}</h2>
+								<h3>{{ VR.voucher_details.title }}</h3>
+								<p>{{ VR.voucher_details.created_at }}</p>
+							</ion-col>
+							<ion-col size="3">
+								<button class="button button-positive" (click)="showQR(VR.id)">Redeem</button>
+							</ion-col>
+						</ion-row>
+					</ion-label>
+				</ion-item>
+			</ng-container>
+		</ion-list>
+	</ng-container>
+
+	<ng-container *ngIf="sharedVoucherDetailsLength != 0">
+		<ion-list>
+			<ng-container *ngFor="let VR of sharedVoucherDetails">
+				<ion-item >
+					<!-- {{ VR.voucher_details.offer.title | json }} -->
+					 <ion-label>
+						<ion-row>
+							<ion-col size="9">
+								<h2 *ngIf="VR.voucher_details != undefined">{{ VR.voucher_details.offer.title }}</h2>
+								<h3 *ngIf="VR.voucher_details != undefined">{{ VR.voucher_details.title }}</h3>
+								<p *ngIf="VR.voucher_details != undefined">{{ VR.voucher_details.created_at }}</p>
+							</ion-col>
+							<ion-col size="3">
+								<button class="button button-positive" (click)="showQR(VR.id)">Redeem</button>
+							</ion-col>
+						</ion-row>
+					</ion-label>
+				</ion-item>
+			</ng-container>
+		</ion-list>
+	</ng-container>
+
+	<ng-container *ngIf="voucherDetailsLength == 0 && sharedVoucherDetailsLength == 0" >
+		<h3 style="text-align: center;"> No paid voucher found </h3>
+	</ng-container>
+</ion-content>
+<app-footer-tabs></app-footer-tabs>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "123317887619",
+    "firebase_url": "https://discountindia-222b3.firebaseio.com",
+    "project_id": "discountindia-222b3",
+    "storage_bucket": "discountindia-222b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123317887619:android:0cf051497a7fdaae56f1b6",
+        "android_client_info": {
+          "package_name": "com.discountindia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123317887619-imlpo72bpn3r66ju3oba4ib50ngqg5hm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwqSjHwywz7SLoFUl788uHkLBZj0L2S3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123317887619-imlpo72bpn3r66ju3oba4ib50ngqg5hm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

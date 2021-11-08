@@ -1,0 +1,13 @@
+<ion-header [ngClass]="isHide">
+	<ion-toolbar>
+		<ion-title>Redeem Voucher</ion-title>
+		<div slot="end">
+			<ion-icon (click)="home()" name="home"></ion-icon>
+		</div>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="background: none transparent;" [ngClass]="isHide"> 
+	<!-- <ion-button color="primary" (click)="qrscan()" >Scan again</ion-button> -->
+	<img src="../../../assets/scan.png" alt="">
+</ion-content>

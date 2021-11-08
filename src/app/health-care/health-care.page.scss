@@ -1,0 +1,35 @@
+ion-header .bg-img
+ {
+	--background: url('../../assets/Ist-backbg.jpg') center/cover;
+} 
+.text-deal{
+	color:#c7af83;
+}
+.search-bar{
+	--background: #0b3251;
+}
+.searchbar-input.sc-ion-searchbar-md
+{
+	background: transparent !important;
+	box-shadow: none !important;
+	-webkit-box-shadow:none;
+}
+ion-content
+{
+	--background: url('../../assets/sec-bg-pattern.jpg') center/cover;
+}
+ion-searchbar{
+	--background:transparent;
+	box-shadow: none !important;
+	--color:white;
+}
+ion-card{
+	--background:#fff;
+}
+ion-icon{
+	font-size:25px;
+	color: #c7af83;
+}
+.footer{
+	--background: #0b3251;
+}

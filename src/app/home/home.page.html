@@ -1,14 +1,352 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+	<ion-row class="bg-clr-top">
+		<ion-col size="1" class="location">
+			<ion-icon name="pin" class="loc"></ion-icon>
+		</ion-col>
+		<ion-col size="11" class="Select-area">
+			<ion-item class="ion-float-right w-10" style="--inner-border-width: 0px">
+				<ion-label>{{ selectedCity }}</ion-label>
+				<ion-list style="padding: 0;background: transparent;margin: 0;--inner-border-width: 0">
+					<ion-item style="--inner-border-width: 0px">
+						<ion-label>Change City</ion-label>
+						<ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="cityChange($event)">
+							<ion-select-option *ngFor="let city of cities" value="{{city.city}}">{{ city.city }}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-list>
+			</ion-item>
+		</ion-col>
+	</ion-row>
+ </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+ <ion-content>
+	<ion-grid class="bg-pattern" align-items-center>
+		<ion-row align-items-center class="comn-img">
+			<ion-col *ngFor="let cat of categories" class="homeCat">
+				<div class="amusement" (click)="getOffers(cat.id , cat.name)">
+					<img src="{{imgPre}}/uploads/{{ cat.icon }}">
+				</div>
+				<div>
+					<p>{{cat.name}}</p>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-row style="padding: 0 5px;">
+		<ion-col class="slider">
+			<ion-slides [options]="slideOptsOne">
+				<ion-slide *ngFor="let item of listslider" >
+					<ion-card style="margin-right: 20px;">
+						<ion-card-content>
+							<a href="tel:+91 {{ item.mobile }}" (click)="hasClick(item.id)">
+								<ion-img src="{{imgPre}}/uploads/{{ item.attachment }}"></ion-img>
+								<h2> <b>{{item.title}} </b></h2>
+								<h4>{{item.summary}}</h4>	
+							</a>
+						</ion-card-content>
+					</ion-card>
+				</ion-slide>
+			</ion-slides>
+		</ion-col>
+	</ion-row>
+
+	<ion-row class="tabsVoucher">
+		<ng-container *ngFor="let hotCat of hotDealsCategory">
+			<ion-col class="delivery" [class.activetab]="selectedHotCategory == 'hotCat_'+hotCat.id" id="hotCat_{{ hotCat.id }}" (click)="getCategoryHotDeals(hotCat.id)" >
+				{{ hotCat.name }}
+			</ion-col>
+		</ng-container>
+	</ion-row>
+	
+	<ion-row *ngIf="activetab == 'delivery' ">
+		<ng-container *ngIf="deliverylength == 0">
+			No Delivery Vendor Available
+		</ng-container>
+		<ng-container *ngIf="deliverylength > 0">
+			<ion-col>
+				<h4 class="ion-text-center" style="padding: 0px;margin: 0px;margin-bottom: 10px;text-align: center;">Exclusive Services</h4>
+				<a *ngFor="let item of deliveryData" href="tel:+91 {{ item.mobile }}" style="margin-bottom: 10px;text-decoration:none;">
+					<img src="{{ imgPre }}/uploads/{{ item.attachment }}" >
+					<p style="width: 100%;text-align: center;background: #0b3251;margin-top: -5px;padding: 10px;margin-bottom: 10px;color: white;">Book now</p>
+				</a>
+			</ion-col>
+		</ng-container>
+	</ion-row>
+	
+	<ng-container *ngIf=" activetab == 'planVoucher' ">
+		<!-- <div class="subCategoryDeals">
+			<ul class="subCategoryHot">
+				<ng-container *ngFor="let hotCat of hotDealsCategory">
+					<li [class.select]="selectedHotCategory == 'hotCat_'+hotCat.id" id="hotCat_{{ hotCat.id }}" (click)="getCategoryHotDeals(hotCat.id)" >
+						{{ hotCat.name }}
+					</li>
+				</ng-container>
+			</ul>
+		</div> -->
+
+		<ng-container *ngFor="let hotCat of hotDealsCategory">
+			<ion-row [class.Categoryshow]="selectedHotCategory == 'hotCat_'+hotCat.id " [class.CategoryHide]="selectedHotCategory != 'hotCat_'+hotCat.id " >
+				<ion-col *ngIf="hotCat.hot_deal_id != null ">
+					<h4 class="ion-text-center" style="padding: 0px;margin: 0px;margin-bottom: 10px;">Deals of the day</h4>
+					<ng-container *ngFor="let hotDeal of hotCat.vouchers">
+						<img *ngIf="hotDeal.vooucher_details != null && hotDeal.vooucher_details != ''" src="{{ imgPre }}/uploads/{{ hotDeal.vooucher_details.banner }}" (click)="getVoucher(hotDeal.vooucher_details.voucher_id)">
+					</ng-container>
+				</ion-col>
+			</ion-row>
+		</ng-container>
+				
+		<ng-container *ngFor="let hotCat of hotDealsCategory">
+			<ion-row [class.Categoryshow]="selectedHotCategory == 'hotCat_'+hotCat.id " [class.CategoryHide]="selectedHotCategory != 'hotCat_'+hotCat.id ">
+				<ion-col *ngIf="hotCat.hot_deal_id == null ">
+					<h4 class="ion-text-center" style="padding: 0px;margin: 0px;margin-bottom: 10px;">Deals of the day</h4>
+					<ion-card style="padding: 20px;background: white;text-align: center;">
+						No New Offer Available
+					</ion-card>
+				</ion-col>
+			</ion-row>
+		</ng-container>
+	</ng-container>
+
+
+	<ng-container *ngIf="premiumDeals != undefined ">
+		
+			<ion-row *ngIf=" activetab == 'premiumVoucher' ">
+				<ion-col *ngIf="premiumDealsLength != 0 ">
+					<h4 class="ion-text-center" style="padding: 0px;margin: 0px;margin-bottom: 10px;">PREMIUM DEALS</h4>
+			
+					<ng-container *ngFor="let premiumDeal of premiumDeals">
+						<ng-container *ngIf="premiumDeal.fileName != null ">
+							<img src="{{ imgPre }}/voucher/images/{{ premiumDeal.fileName }}"
+								(click)="getPremiumVoucher(premiumDeal.id)">
+						</ng-container>
+						<ng-container *ngIf="premiumDeal.fileName == null ">
+							<div class="vouchers-list" (click)="getPremiumVoucher(premiumDeal.id)"
+								*ngIf="premiumDeal.voucher_template == 4">
+								<ul>
+									<li class="bac">
+										<div class="background">
+											<ul>
+												<li class="imageHandler">
+												</li>
+												<li class="vouchertext">
+													<h2 *ngIf="countlength(premiumDeal.title) <= 5"> {{ premiumDeal.title }} </h2>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="largeTextDiv" *ngIf="countlength( premiumDeal.title ) > 5">
+										{{ premiumDeal.title }}
+									</li>
+								</ul>
+								<br />
+							</div>
+							<div class="vouchers-list" (click)="getPremiumVoucher(premiumDeal.id)"
+								*ngIf="premiumDeal.voucher_template == 1">
+								<ul>
+									<li class="bac">
+										<div class="background2">
+											<ul>
+												<li class="imageHandler">
+												</li>
+												<li class="vouchertext">
+													<h2 *ngIf="countlength(premiumDeal.title) <= 5"> {{ premiumDeal.title }} </h2>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="largeTextDiv" *ngIf="countlength(premiumDeal.title) > 5">
+										{{ premiumDeal.title }}
+									</li>
+								</ul>
+								<br />
+							</div>
+							<div class="vouchers-list" (click)="getPremiumVoucher(premiumDeal.id)"
+								*ngIf="premiumDeal.voucher_template == 3">
+								<ul>
+									<li class="bac">
+										<div class="background3">
+											<ul>
+												<li class="imageHandler">
+												</li>
+												<li class="vouchertext">
+													<h2 *ngIf="countlength(premiumDeal.title) <= 5"> {{ premiumDeal.title }} </h2>
+													<h2 *ngIf="countlength(premiumDeal.title) >= 5"> </h2>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="largeTextDiv" *ngIf="countlength(premiumDeal.title) >= 5">
+										{{ premiumDeal.title }}
+									</li>
+								</ul>
+								<br />
+							</div>
+							<div class="vouchers-list" (click)="getPremiumVoucher(premiumDeal.id)"
+								*ngIf="premiumDeal.voucher_template == 2">
+								<ul>
+									<li class="bac">
+										<div class="background4">
+											<ul>
+												<li class="imageHandler">
+												</li>
+												<li class="vouchertext">
+													<h2 *ngIf="countlength(premiumDeal.title) <= 5"> {{ premiumDeal.title }} </h2>
+												</li>
+											</ul>
+										</div>
+									</li>
+				
+									<li class="largeTextDiv" *ngIf="countlength(premiumDeal.title) > 5">
+										{{ premiumDeal.title }}
+									</li>
+								</ul>
+								<br />
+							</div>
+							<div class="vouchers-list" (click)="getPremiumVoucher(premiumDeal.id)"
+								*ngIf="premiumDeal.voucher_template == 5">
+								<ul>
+									<li class="bac">
+										<div class="background5">
+											<ul>
+												<li class="imageHandler">
+												</li>
+												<li class="vouchertext">
+													<h2 *ngIf="countlength(premiumDeal.title) <= 5"> {{ premiumDeal.title }} </h2>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="largeTextDiv" *ngIf="countlength(premiumDeal.title) > 5">
+										{{ premiumDeal.title }}
+									</li>
+								</ul>
+								<br />
+							</div>
+						</ng-container>
+					</ng-container>
+
+					<ng-container *ngFor="let premiumDeal of sharedDeals">
+						<div class="vouchers-list" (click)="sharePremiumVoucher(premiumDeal.voucherId)"
+							*ngIf="premiumDeal.voucher_template == 4">
+							<ul>
+								<li class="bac">
+									<div class="background">
+										<ul>
+											<li class="imageHandler">
+											</li>
+											<li class="vouchertext">
+												<h2 *ngIf="countlength(premiumDeal.voucher_details.title) <= 5">
+													{{ premiumDeal.voucher_details.title }} </h2>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="largeTextDiv" *ngIf="countlength( premiumDeal.voucher_details.title ) > 5">
+									{{ premiumDeal.voucher_details.title }}
+								</li>
+							</ul>
+							<br />
+						</div>
+						<div class="vouchers-list" (click)="sharePremiumVoucher(premiumDeal.voucherId)"
+							*ngIf="premiumDeal.voucher_template == 1">
+							<ul>
+								<li class="bac">
+									<div class="background2">
+										<ul>
+											<li class="imageHandler">
+											</li>
+											<li class="vouchertext">
+												<h2 *ngIf="countlength(premiumDeal.voucher_details.title) <= 5">
+													{{ premiumDeal.voucher_details.title }} </h2>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="largeTextDiv" *ngIf="countlength(premiumDeal.voucher_details.title) > 5">
+									{{ premiumDeal.voucher_details.title }}
+								</li>
+							</ul>
+							<br />
+						</div>
+						<div class="vouchers-list" (click)="sharePremiumVoucher(premiumDeal.voucherId)"
+							*ngIf="premiumDeal.voucher_template == 3">
+							<ul>
+								<li class="bac">
+									<div class="background3">
+										<ul>
+											<li class="imageHandler">
+											</li>
+											<li class="vouchertext">
+												<h2 *ngIf="countlength(premiumDeal.voucher_details.title) <= 5">
+													{{ premiumDeal.voucher_details.title }} </h2>
+												<h2 *ngIf="countlength(premiumDeal.voucher_details.title) >= 5"> </h2>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="largeTextDiv" *ngIf="countlength(premiumDeal.voucher_details.title) >= 5">
+									{{ premiumDeal.voucher_details.title }}
+								</li>
+							</ul>
+							<br />
+						</div>
+						<div class="vouchers-list" (click)="sharePremiumVoucher(premiumDeal.voucherId)"
+							*ngIf="premiumDeal.voucher_template == 2">
+							<ul>
+								<li class="bac">
+									<div class="background4">
+										<ul>
+											<li class="imageHandler">
+											</li>
+											<li class="vouchertext">
+												<h2 *ngIf="countlength(premiumDeal.voucher_details.title) <= 5">
+													{{ premiumDeal.voucher_details.title }} </h2>
+											</li>
+										</ul>
+									</div>
+								</li>
+			
+								<li class="largeTextDiv" *ngIf="countlength(premiumDeal.voucher_details.title) > 5">
+									{{ premiumDeal.voucher_details.title }}
+								</li>
+							</ul>
+							<br />
+						</div>
+						<div class="vouchers-list" (click)="sharePremiumVoucher(premiumDeal.voucherId)"
+							*ngIf="premiumDeal.voucher_template == 5">
+							<ul>
+								<li class="bac">
+									<div class="background5">
+										<ul>
+											<li class="imageHandler">
+											</li>
+											<li class="vouchertext">
+												<h2 *ngIf="countlength(premiumDeal.voucher_details.title) <= 5">
+													{{ premiumDeal.voucher_details.title }} </h2>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="largeTextDiv" *ngIf="countlength(premiumDeal.voucher_details.title) > 5">
+									{{ premiumDeal.voucher_details.title }}
+								</li>
+							</ul>
+							<br />
+						</div>
+					</ng-container>
+			
+			
+				</ion-col>
+				<ion-col *ngIf="premiumDealsLength == 0 ">
+					<h4 class="ion-text-center" style="padding: 0px;margin: 0px;margin-bottom: 10px;">PREMIUM DEALS</h4>
+					<ion-card style="padding: 20px;background: white;text-align: center;">
+						No New Offer Available
+					</ion-card>
+				</ion-col>
+			</ion-row>
+		
+	</ng-container>
+	
 </ion-content>
+<app-footer-tabs></app-footer-tabs>

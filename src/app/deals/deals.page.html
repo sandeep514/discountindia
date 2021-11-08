@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar class="bg-img">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+    <ion-row>
+    	<ion-col size="5">
+    		<p class="text-deal">Deals</p>
+    	</ion-col>
+    	<ion-col size="6">
+    		<!-- <div class="ion-float-right ion-padding-top" (click)="showFilters()">	
+    			<ion-icon color="light" name="funnel"></ion-icon>
+				</div> -->
+    	</ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	
+	<ng-container *ngIf="hasOffers != false">	
+		<ng-container *ngFor="let offer of offers" >
+			<ion-card *ngIf="offer.attachment != null" (click)="showDetail(offer.id)">
+				<ion-card-header>
+					<div class="imagegator" *ngIf="offer.attachment != '' || offer.attachment != null" >
+						<img src="{{ imagePrefix }}/uploads/{{ offer.attachment[0] }}">
+					</div>
+					<ion-row>
+						<ion-col size="8" style="margin-left: 5px;">
+							<ion-card-title>{{ offer.title }}</ion-card-title>
+						</ion-col>
+					</ion-row>
+				</ion-card-header>
+					<ion-card-content>
+						{{ offer.description }}
+					</ion-card-content>
+					<div style="margin: 0;padding: 0 10px 5px 10px;"> 
+						<ion-button size="medium" color="danger" disable-hover (click)="showDetail(offer.id)">Vouchers</ion-button>
+					</div>
+			</ion-card>
+		</ng-container>
+	</ng-container>
+
+	<ng-container *ngIf="hasOffers == false">
+		<ion-card class="noItem"> No Item Found </ion-card>
+	</ng-container>
+</ion-content>
+<app-footer-tabs></app-footer-tabs>

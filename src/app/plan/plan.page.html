@@ -1,0 +1,45 @@
+<ion-header>
+	<ion-toolbar class="bg-img">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-row>
+			<ion-col>
+				<p class="text-deal">Plan</p>
+			</ion-col>
+		</ion-row>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list  *ngFor="let plans of Plan">
+		<ion-item *ngIf="plans.image != null && plans != undefined">
+         	<ion-label >
+				<img src="{{ imagepre }}/plan/images/{{ plans.image }}" alt="" (click)="showImage(plans.image)">
+				<ul class="detailsList" style="list-style: none; padding: 0px; margin: 0px;">
+					<li>
+						<a style="text-decoration: none;" *ngIf=" plans.contactno != '' " (click)="goToPlanDetailsPage(plans)">
+						<!-- <a style="text-decoration: none;" *ngIf=" plans.contactno != '' " href="tel:{{ plans.contactno }}"> -->
+							<p class="getDetails">
+								<ion-icon name="call"></ion-icon> Get Details
+							</p>
+						</a>
+					</li>
+					<li>
+						<a style="text-decoration: none;" *ngIf=" plans.contactno != '' " (click)="buyNowPlan(plans)">
+						<!-- <a style="text-decoration: none;" *ngIf=" plans.contactno != '' " href="tel:{{ plans.contactno }}"> -->
+							<p class="getDetails">
+								<ion-icon name="cart" style="line-height`: 10;"></ion-icon> Buy Now
+							</p>
+						</a>
+					</li>
+				</ul>
+				<!-- <h2>{{ plans.voucher_details.offer.title }}</h2>
+				<h3>{{ plans.voucher_details.title }}</h3>
+				<p>{{ plans.voucher_details.created_at }}</p> -->
+			</ion-label>
+        </ion-item>
+	</ion-list>
+</ion-content>
+<app-footer-tabs></app-footer-tabs>

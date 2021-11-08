@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar class="bg-img">
+			<ion-buttons slot="start">
+					<ion-back-button></ion-back-button>
+				</ion-buttons>
+    <ion-row>
+    	<ion-col size="5">
+    		<p class="text-deal">Health Care</p>
+    	</ion-col>
+    	<ion-col size="6">
+    		<div class="ion-float-right ion-padding-top">	
+    			<ion-icon color="light" name="funnel"></ion-icon>
+				</div>
+    	</ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+		<ion-toolbar class="search-bar">
+	 		 <ion-searchbar placeholder="Search...."></ion-searchbar>
+		</ion-toolbar>
+		<ion-card>
+		  <ion-card-header>
+				<div class=""><img src="../../assets/tuli.jpg"></div>
+				<ion-row>
+					<ion-col size="8">
+							<ion-card-title>Tuli Diagnostic Center</ion-card-title>
+					</ion-col>
+					<ion-col class="ion-text-end" size="1">
+							<div>20</div>
+					</ion-col>
+					<ion-col class="ion-text-end" size="1">
+							<div>0</div>
+					</ion-col>
+					<ion-col class="ion-text-end" size="2">
+							<ion-icon name="heart" color="danger"></ion-icon>
+					</ion-col>
+				</ion-row>
+		 </ion-card-header>
+			<ion-card-content>
+				Established in the year 2016, Panchvati Diagnostic Centre in Majitha Road, Amritsar is a top player in the category Diagnostic Centres in the Amritsar.
+			</ion-card-content>
+			<div padding>
+					<ion-button size="medium" color="danger" disable-hover (click)="details()">Booklet Applicable</ion-button>
+			</div>
+	</ion-card>
+</ion-content>
+<app-footer-tabs></app-footer-tabs>

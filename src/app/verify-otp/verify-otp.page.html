@@ -1,0 +1,20 @@
+<ion-content class="bg-img">
+	<div class="image">
+		<img padding src="../../assets/logo.png">
+	</div>
+	<div class="error" *ngIf="hasValidationError != null">
+		<ul class="errors" *ngFor="let error of hasValidationError">
+			<li>{{ error }}</li>
+		</ul>
+	</div>
+	<form class="m-form" padding autocomplete="off">
+		<ion-item class="email">
+			<ion-label position="floating"> Enter OTP </ion-label>
+			<ion-input [(ngModel)]="otp" name="otp"></ion-input>
+			<ion-icon item-right name="otp"></ion-icon>
+		</ion-item>
+	</form>
+	<div padding>
+		<ion-button size="medium" expand="block"  disable-hover (click)="verifyOTP()">Verify</ion-button>
+	</div>
+</ion-content>

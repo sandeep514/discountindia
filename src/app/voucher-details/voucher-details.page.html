@@ -1,0 +1,162 @@
+<ion-header>
+ 	 <ion-toolbar class="bg-img">
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+			<ion-row>
+				<ion-col size="5">
+					<p class="text-deal">Voucher</p>
+				</ion-col>
+				<!-- <ion-col size="6">
+					<div class="ion-float-right ion-padding-top" (click)="showFilters()">	
+						<ion-icon color="light" name="funnel"></ion-icon>
+						</div>
+				</ion-col> -->
+			</ion-row>
+  	</ion-toolbar>
+</ion-header>
+
+<ion-content>	
+	<ion-card>
+		<ng-container >
+			<ion-col class="ion-text-end text-bg ion-no-padding" style="margin-right: 17px;">
+				<small color="light">{{vouchers.voucher_unique_id}}</small>
+			</ion-col>
+			<ion-col class="ion-text-end text-bg ion-no-padding rightupload">
+				<small color="light">{{customerId}}</small>
+			</ion-col>
+				<ng-container *ngIf="vouchers != null">
+					<div class="vouchers-list" (click)="getVoucher()" *ngIf="vouchers.voucher_template === '4'">
+						<ul>
+							<li class="bac">
+								<div class="background">
+									<ul>
+										<li class="imageHandler" *ngIf="vouchers != undefined ">
+											<img src="../../assets/voucher/{{ vouchers.offer.category.icon }}" alt="category logo">
+										</li>
+										<li class="vouchertext">
+											<h2 *ngIf="countlength(vouchers.title) <= 5"> {{ vouchers.title }} </h2>						
+										</li> 
+									</ul>
+		
+									<div class="valid_date">
+										<!-- <p>Valid date: <span>{{ vouchers.valid_date }}</span></p> -->
+										<p>Terms and condition: <small>{{ vouchers.terms_condition }}</small></p>
+									</div>
+									
+								</div>
+							</li>
+							<li class="largeTextDiv" *ngIf="countlength(vouchers.title) > 5">
+								{{ vouchers.title }}
+							</li>
+						</ul>
+						<br/>
+					</div>
+					<div class="vouchers-list" (click)="getVoucher()" *ngIf="vouchers.voucher_template === '1'">
+						
+						<ul>
+							<li class="bac">
+								<div class="background2">
+									<ul>
+										<li class="imageHandler">
+											<img src="../../assets/voucher/{{ vouchers.offer.category.icon }}" alt="category logo">
+										</li>
+										<li class="vouchertext">
+											<h2 *ngIf="countlength(vouchers.title) <= 5"> {{ vouchers.title }} </h2>						
+										</li>
+									</ul>
+									<div class="valid_date">
+										<!-- <p>Valid date: <span>{{ vouchers.valid_date }}</span></p> -->
+										<p>Terms and condition: <small>{{ vouchers.terms_condition }}</small></p>
+									</div>
+								</div>
+							</li>
+							<li class="largeTextDiv" *ngIf="countlength(vouchers.title) > 5">
+								{{ vouchers.title }}
+							</li>
+						</ul>
+						<br/>
+					</div>
+					<div class="vouchers-list" (click)="getVoucher()" *ngIf="vouchers.voucher_template === '3'">
+						
+						<ul>
+							<li class="bac">
+								<div class="background3">
+									<ul>
+										<li class="imageHandler">
+											<img src="../../assets/voucher/{{ vouchers.offer.category.icon }}" alt="category logo">
+										</li>
+										<li class="vouchertext">
+											<h2 *ngIf="countlength(vouchers.title) <= 5"> {{ vouchers.title }} </h2>						
+											<h2 *ngIf="countlength(vouchers.title) >= 5">  </h2>						
+										</li>
+									</ul>
+									<div class="valid_date">
+										<!-- <p>Valid date: <span>{{ vouchers.valid_date }}</span></p> -->
+										<p>Terms and condition: <small>{{ vouchers.terms_condition }}</small></p>
+									</div>
+								</div>
+							</li>
+							<li class="largeTextDiv" *ngIf="countlength(vouchers.title) >= 5">
+								{{ vouchers.title }}
+							</li>
+						</ul>
+						<br/>
+					</div>
+					<div class="vouchers-list" (click)="getVoucher()" *ngIf="vouchers.voucher_template === '2'">
+						
+						<ul>
+							<li class="bac">
+								<div class="background4">
+									<ul>
+										<li class="imageHandler">
+											<img src="../../assets/voucher/{{ vouchers.offer.category.icon }}" alt="category logo">
+										</li>
+										<li class="vouchertext">
+											<h2 *ngIf="countlength(vouchers.title) <= 5"> {{ vouchers.title }} </h2>						
+											<div class="valid_date">
+												<!-- <p>Valid date: <span>{{ vouchers.valid_date }}</span></p> -->
+												<p>Terms and condition: <small>{{ vouchers.terms_condition }}</small></p>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+							
+							<li class="largeTextDiv" *ngIf="countlength(vouchers.title) > 5">
+								{{ vouchers.title }}
+							</li>
+						</ul>
+						<br/>
+					</div>
+					<div class="vouchers-list" (click)="getVoucher()" *ngIf="vouchers.voucher_template === '5'">
+						
+						<ul>
+							<li class="bac">
+								<div class="background5">
+									<ul>
+										<li class="imageHandler">
+											<img src="../../assets/voucher/{{ vouchers.offer.category.icon }}" alt="category logo">
+										</li>
+										<li class="vouchertext">
+											<h2 *ngIf="countlength(vouchers.title) <= 5"> {{ vouchers.title }} </h2>						
+										</li>
+									</ul>
+									<div class="valid_date">
+										<!-- <p>Valid date: <span>{{ vouchers.valid_date }}</span></p> -->
+										<p>Terms and condition: <small>{{ vouchers.terms_condition }}</small></p>
+									</div>
+								</div>
+							</li>
+							<li class="largeTextDiv" *ngIf="countlength(vouchers.title) > 5">
+								{{ vouchers.title }}
+							</li>
+						</ul>					
+						<br/>
+					</div>
+				</ng-container>
+				<img [src]="'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+vouchers.voucher_unique_id +''+ customerId " alt="" style="width: 50%;margin: 0 auto;padding-bottom: 10px;">
+		</ng-container>
+	</ion-card>
+</ion-content>
+<app-footer-tabs></app-footer-tabs>

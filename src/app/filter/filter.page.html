@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar class="bg-img">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+          </ion-buttons>
+      <ion-row>
+        <ion-col size="5">
+          <p class="text-deal">Filter</p>
+        </ion-col>
+        <ion-col size="6">
+          <div class="ion-float-right ion-padding-top">	
+         </div>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+<ion-content  class="bg-img" padding>
+     <form padding>
+        <ion-item>
+            <ion-label position="floating">Minimum cart Value (%Discount)</ion-label>
+            <ion-range min="20" max="80" step="2" dual-knobs="true">
+                <!-- <ion-icon size="small" slot="start" name="sunny"></ion-icon> -->
+                <!-- <ion-icon slot="end" name="sunny"></ion-icon> -->
+            </ion-range>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Minimum Discount Value (INR)</ion-label>
+            <ion-range min="20" max="80" step="2" dual-knobs="true">
+                <!-- <ion-icon size="small" slot="start" name="sunny"></ion-icon> -->
+                <!-- <ion-icon slot="end" name="sunny"></ion-icon> -->
+            </ion-range>
+        </ion-item>
+        
+     </form>
+     <div padding>
+        <ion-button size="medium" disable-hover expand="block">Apply</ion-button>
+     </div>
+</ion-content>
+ 
+  

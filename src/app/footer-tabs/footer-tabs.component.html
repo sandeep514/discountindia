@@ -1,0 +1,32 @@
+<ion-footer>
+	<ion-toolbar class="footer">
+		<ion-row>
+			<ion-col class="ion-text-center" (click)="goToHome()">
+				<!-- <img src="../../assets/heart.png" style="width: 46%;" alt=""> -->
+				<ion-icon name="home" color="light" style="--ion-color-base: skyblue !important;font-size: 28px;"></ion-icon>
+				<p style="color: white; font-size: 11px;margin-top: 5px;margin-bottom: 0;">Home</p>
+			</ion-col>
+			<ion-col class="ion-text-center" (click)="buyVoucher()">
+				<img src="../../assets/heart.png" style="width: 46%;" alt="">
+
+				<p style="color: white; font-size: 11px;margin-top: 5px;margin-bottom: 0;">My Buy</p>
+			</ion-col>
+			<ion-col class="ion-text-center" (click)="listUsedVouchers()">
+				<!-- <ion-icon name="list-box" color="light" style="--ion-color-base: skyblue !important"></ion-icon> -->
+				<img src="../../assets/vouchers.png" style="width: 46%;" alt="">
+
+				<p style="color: white; font-size: 11px;margin-top: 5px;margin-bottom: 0;">History</p>
+			</ion-col>
+			<ion-col class="ion-text-center" (click)="listPlans()">
+				<!-- <ion-icon color="light" name="today" style="--ion-color-base: #33FFC1 !important"></ion-icon> -->
+				<img src="../../assets/plan.png" style="width: 46%;" alt="">
+				<p style="color: white; font-size: 11px;margin-top: 5px;margin-bottom: 0;">Membership</p>
+			</ion-col>
+			<ion-col class="ion-text-center" (click)="profile()">
+				<!-- <ion-icon  color="light" name="person" style="--ion-color-base: yellow !important"></ion-icon> -->
+				<img src="../../assets/user.png" style="width: 46%;" alt="">
+				<p style="color: white; font-size: 11px;margin-top: 5px;margin-bottom: 0;">Profile</p>	
+			</ion-col>
+		</ion-row>
+	</ion-toolbar>
+</ion-footer>

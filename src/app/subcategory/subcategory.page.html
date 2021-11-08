@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class="bg-img">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col>
+        <p class="text-deal">Deals</p>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="ionsegment">
+		<ul>
+			<li *ngFor="let subCat of subcategorylist" (click)="getDealsById(subCat.id)">
+				{{ subCat.title }}
+			</li>
+		</ul>
+	</div>
+	<!-- <ng-container *ngIf="hasOffers != false">
+		<ng-container *ngFor="let offer of offers">
+			<ion-card *ngIf="offer.attachment != null">
+				<ion-card-header>
+					<div class="" *ngIf="offer.attachment != '' || offer.attachment != null"><img
+							src="{{ imagePrefix }}/uploads/{{ offer.attachment[0] }}"></div>
+					<ion-row>
+						<ion-col size="8">
+							<ion-card-title>{{ offer.title }}</ion-card-title>
+						</ion-col>
+					</ion-row>
+				</ion-card-header>
+				<ion-card-content>
+					{{ offer.description }}
+				</ion-card-content>
+				<div padding>
+					<ion-button size="medium" color="danger" disable-hover (click)="showDetail(offer.id)">Vouchers
+					</ion-button>
+				</div>
+			</ion-card>
+		</ng-container>
+	</ng-container> -->
+	
+</ion-content>

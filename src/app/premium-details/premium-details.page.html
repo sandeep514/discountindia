@@ -1,0 +1,127 @@
+<ion-header>
+	<ion-toolbar class="bg-img">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-row>
+			<ion-col size="12">
+				<p class="text-deal">Voucher Details</p>
+			</ion-col>
+		</ion-row>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+		<ion-card-header class="no-padding" *ngIf="detailsLength > 0">
+			
+			<ion-row>
+				<div class="" *ngIf="details.fileName != null">
+					<img src="{{ preImage }}/voucher/images/{{ details.fileName }}">
+				</div>
+
+				<ng-container *ngIf="details.fileName == null">
+
+					<div *ngIf="details.voucher_template != 0 && details.voucher_template != undefined" style="width: 100%;">
+						<div *ngIf="details.voucher_template == 1" style="width: 100%;">
+							<div class="background2">
+							</div>
+						</div>
+						
+						<div *ngIf="details.voucher_template == 2" style="width: 100%;">
+							<div class="background">
+							</div>
+						</div>
+						
+						<div *ngIf="details.voucher_template == 3" style="width: 100%;">
+							<div class="background3">
+							</div>
+						</div>
+						
+						<div *ngIf="details.voucher_template == 4" style="width: 100%;">
+							<div class="background4">
+							</div>
+						</div>
+						
+						<div *ngIf="details.voucher_template == 5" style="width: 100%;">
+							<div class="background5">
+							</div>
+						</div>
+					</div>
+				</ng-container>
+				<ion-row style="width: 100%;">
+					<ion-col size="8">
+						<ion-card-title *ngIf="details != undefined && details != null"> {{ details.title }} </ion-card-title>
+						<p *ngIf="details != undefined && details != null"> {{ details.terms_condition }} </p>
+					</ion-col>
+				</ion-row>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<button *ngIf="user != null" (click)="payWithRazor(details)" ion-button color="secondary" class="primaryColor">Buy at Rs.{{ details.customer_price }}</button>
+					<button *ngIf="user == null" (click)="Login()" ion-button color="secondary" class="primaryColor">Login to Buy</button>
+				</ion-col>
+			</ion-row>
+
+		</ion-card-header>
+
+		<ion-card-header class="no-padding" *ngIf="detailsVoucher != null">
+			<div *ngIf="detailsVoucher.voucher_details != undefined">
+				<div *ngIf="detailsVoucher.voucher_details.voucher_template == 1">
+					<div class="background2">
+					</div>
+				</div>
+				<div *ngIf="detailsVoucher.voucher_details.voucher_template == 2">
+					<div class="background">
+					</div>
+				</div>
+				<div *ngIf="detailsVoucher.voucher_details.voucher_template == 3">
+					<div class="background3">
+					</div>
+				</div>
+				<div *ngIf="detailsVoucher.voucher_details.voucher_template == 4">
+					<div class="background4">
+					</div>
+				</div>
+				<div *ngIf="detailsVoucher.voucher_details.voucher_template == 5">
+					<div class="background5">
+					</div>
+				</div>
+			</div>
+
+
+			<ion-row>
+				<ion-col size="12">
+					<ion-card-title *ngIf="detailsVoucher != undefined && detailsVoucher != null"> {{ detailsVoucher.voucher_details.title }} </ion-card-title>
+					<p *ngIf="detailsVoucher != undefined && detailsVoucher != null"> {{ detailsVoucher.voucher_details.terms_condition }} </p>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<small *ngIf="detailsVoucher != undefined && detailsVoucher.voucher_details != null && detailsVoucher.voucher_details.offer != null && detailsVoucher.voucher_details.offer.address != null">
+						<b>Address: </b> {{ detailsVoucher.voucher_details.offer.address }}
+					</small>
+					<br/>
+					<small *ngIf="detailsVoucher != undefined && detailsVoucher.voucher_details != null && detailsVoucher.voucher_details.offer != null && detailsVoucher.voucher_details.offer.mobile != null">
+						<b>Tel:</b><a href="tel:+{{ detailsVoucher.voucher_details.offer.mobile }}">+91 {{ detailsVoucher.voucher_details.offer.mobile }}</a>
+					</small>
+					<br/>
+					<small *ngIf="detailsVoucher != undefined && detailsVoucher.voucher_details != null && detailsVoucher.voucher_details.offer != null && detailsVoucher.voucher_details.offer.email != null">
+						<b>Email:</b> {{ detailsVoucher.voucher_details.offer.email }}
+					</small>
+					<br/>
+					<small *ngIf="detailsVoucher != undefined && detailsVoucher.voucher_details != null && detailsVoucher.voucher_details.offer != null && detailsVoucher.voucher_details.offer.fax != null ">
+						<b>Fax:</b> {{ detailsVoucher.voucher_details.offer.fax }}
+					</small>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<button (click)="payWithRazorShared(detailsVoucher)" ion-button color="secondary" class="primaryColor">Buy Now</button>
+				</ion-col>
+			</ion-row>
+		</ion-card-header>
+	</ion-card>
+</ion-content>
+<app-footer-tabs></app-footer-tabs>

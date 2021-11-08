@@ -1,0 +1,66 @@
+ion-content
+{
+	--background: url('../../assets/sec-bg-pattern.jpg') center/cover;
+}
+ion-header .bg-img
+ {
+	--background: url('../../assets/Ist-backbg.jpg') center/cover;
+} 
+.text-deal{
+	color:#c7af83;
+}
+.image {
+	width: 55%;
+    margin: 0 auto;
+    padding-top:30px;
+}
+.m-form
+{
+	padding:20px;
+}
+.email,.passwrd{
+	--background: none;
+	padding-bottom:25px;
+}
+ion-button{
+	--background: #0b3251;
+	text-transform: none;
+}
+.forgot-p a{
+	color: #333;
+}
+.profile ion-icon{
+	font-size: 115px;
+}
+.m-form ion-icon{
+	color: #ad9265;
+	font-size:20px;
+	position: absolute;
+    right: 15px;
+    top: 17px;
+}
+footer p{
+	color:#fff;
+}
+ion-label{
+	--color:#c7af83;
+}
+.outline
+{
+	border:1px solid rgb(184, 184, 184);
+	padding:5px;
+	margin:10px 10px 0px;
+	background-color:rgb(245, 245, 245);
+	border-radius:4px;
+}
+.outline p{
+	font-size:12px;
+}
+.outline ion-icon{
+	font-size:20px;
+	padding-top:6px;
+	color: #ad9265;
+}
+ion-item{
+	--highlight-color-focused:none;
+}

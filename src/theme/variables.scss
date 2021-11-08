@@ -74,4 +74,61 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+  
+}
+
+:host ::ng-deep {
+  .select-icon-inner{
+    color: #FFF !important;
+}
+}
+.error{
+  color: red;
+    text-align: center;
+}
+.homeCat{
+  min-width: 70px !important;
+}
+.noItem{
+  padding: 20px ;
+  text-align: center
+}
+.custmoer_id{
+  width:100%;
+
+  
+}
+.custmoer_id p{
+  width:50%;
+  padding-left: 24px;
+
+  float:left;
+}
+.custmoer_id small{
+
+  width:50%;
+  float:right;
+}
+.custmoer_id small{
+  padding-top: 19px
+}
+.toolbar-container{
+  background: #0b3251 !important;
+  color: white !important;
+}
+// ion-app.cameraView, ion-app.cameraView ion-content, ion-app.cameraView .nav-decor {
+//   background: transparent none !important;
+// }
+
+.ion-page{
+  z-index: 0
+}
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
+ion-header{
+  text-align: center;
 }

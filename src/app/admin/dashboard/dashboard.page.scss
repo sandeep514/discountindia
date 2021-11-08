@@ -1,0 +1,36 @@
+h3{
+    height: 100px;
+    width: 100%;
+    font-size: 17px;
+    color: white;
+    margin: 0 auto;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    padding: 22% 0px;
+    border-radius: 8px;
+    box-shadow: 4px 2px 10px grey;
+}
+.redeem{
+    h3{
+        background: green;
+    }
+}
+.vouchers{
+    h3{
+        background: #57b0d0;
+    }
+}
+.earnings{
+    h3{
+        background: #7ab44d;
+    }
+}
+.paid{
+    h3{
+        background: #f76218;
+    }
+}
+ion-icon{
+    font-size: 27px;
+}

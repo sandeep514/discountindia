@@ -1,0 +1,21 @@
+ion-header .bg-img
+ {
+	--background: url('../../assets/Ist-backbg.jpg') center/cover;
+} 
+.ionsegment{
+    ul{
+        list-style: none;
+        display: inline-flex;
+        overflow: scroll;
+        width: 100%;
+            padding: 2px 10px;
+        li{
+            padding: 5px 15px;
+            text-align: center;
+            border: 2px solid #23252a;
+            margin: 0 5px;
+            border-radius: 10px;
+            text-transform: capitalize;
+        }
+    }
+}

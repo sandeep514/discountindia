@@ -1,0 +1,42 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Dashboard</ion-title>
+		<div slot="end">
+			<ion-icon (click)="home()" name="home"></ion-icon>
+		</div>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<div class="redeem"> 
+					<h3 (click)="redeemVoucher()">Redeem Voucher</h3>
+				</div>
+			</ion-col>
+			<ion-col>
+				<div class="earnings"> 
+					<h3 (click)="redeemedVoucher()">Redeemed Voucher</h3>
+				</div>
+			</ion-col>
+			<!-- <ion-col>
+				<div class="vouchers">
+					<h3 (click)="createvoucher()">Vouchers</h3>
+				</div>
+			</ion-col> -->
+		</ion-row>
+		<!-- <ion-row>
+			<ion-col>
+				<div class="earnings"> 
+					<h3>Total Earnings</h3>
+				</div>
+			</ion-col>
+			<ion-col>
+				<div class="paid">
+					<h3>Total Paid</h3>
+				</div>
+			</ion-col>
+		</ion-row> -->
+	</ion-grid>
+</ion-content>

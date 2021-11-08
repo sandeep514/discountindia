@@ -1,0 +1,21 @@
+ion-content
+ {
+	--background: url('../../assets/sec-bg-pattern.jpg') center/cover;
+} 
+ion-item{
+    --background:transparent;
+    --border-width:0px 0px 0px;
+}
+ion-header .bg-img
+ {
+	--background: url('../../assets/Ist-backbg.jpg') center/cover;
+} 
+.text-deal{
+    color:#c7af83;
+}
+ion-button{
+    --background: #0b3251;
+}
+ion-item{
+	--highlight-color-focused:none;
+}

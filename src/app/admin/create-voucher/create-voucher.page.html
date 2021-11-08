@@ -1,0 +1,55 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>create Voucher</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	
+	<div>
+		<ion-list>
+			<ion-item>
+				<ion-label>Select Template</ion-label>
+				<ion-select okText="Okay" [(ngModel)]="selectedTemplate" cancelText="Dismiss">
+					<ion-select-option value="{{temp.key}}" *ngFor="let temp of templates | keyvalue" >{{ temp.value }}</ion-select-option>
+				</ion-select>
+			</ion-item>
+		</ion-list>
+	</div>
+
+	<div>
+		<ion-item>
+			<ion-label position="floating" >Title*</ion-label>
+			<ion-input [(ngModel)]="title"></ion-input>
+		</ion-item>
+	</div>
+
+	<div>
+		<ion-item>
+			<ion-label position="floating" >Valid Date* </ion-label>
+			<ion-datetime displayFormat="MM-DD-YYYY" placeholder="Select Date" [(ngModel)]="validDate" min="{{ currentDate }}" max="{{maxDate}}"></ion-datetime>
+		</ion-item>
+	</div>
+	
+	<div>
+		<ion-item>
+			<ion-label position="floating" >Terms and Condition*</ion-label>
+			<ion-input [(ngModel)]="TandC"></ion-input>
+		</ion-item>
+	</div>
+
+	<div>
+		<ion-item>
+			<ion-label position="floating" >Customer price*</ion-label>
+			<ion-input [(ngModel)]="customerPrice"></ion-input>
+		</ion-item>
+	</div>
+
+	<div>
+		<ion-item>
+			<ion-label position="floating" >Hotel price*</ion-label>
+			<ion-input [(ngModel)]="hotelPrice"></ion-input>
+		</ion-item>
+	</div>
+	<ion-button (click)="createVoucher()">Submit</ion-button>
+</ion-content>

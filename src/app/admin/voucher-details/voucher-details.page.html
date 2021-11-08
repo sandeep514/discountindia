@@ -1,0 +1,72 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Voucher Details</ion-title>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<div slot="end">
+				<ion-icon (click)="home()" name="home"></ion-icon>
+			  </div>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ng-container *ngIf="voucherType == 'paid'">
+		<ul>
+			<li>
+				{{paidVoucher?.voucher_details.title}}
+			</li>
+			<li>
+				{{paidVoucher?.voucher_details.voucher_unique_id}}
+			</li>
+			<li>
+				{{paidVoucher?.voucher_details.terms_condition}}
+			</li>
+			<ion-button (click)="paidRedeemVoucher()"> Redeem </ion-button>
+		</ul>
+	</ng-container>
+	<ng-container *ngIf="voucherType == 'free'">
+		<ul>
+			<li>
+				{{voucherDetails?.title}}
+			</li>
+			<li>
+				{{voucherDetails?.voucher_unique_id}}
+			</li>
+			<li>
+				{{voucherDetails?.terms_condition}}
+			</li>
+		</ul>
+		<ion-button (click)="redeemVoucher()"> Redeem </ion-button>
+	</ng-container>
+	
+	<ng-container *ngIf="paidVoucherDetails != undefined">
+		<ul>
+			<li>
+				{{paidVoucherDetails?.voucher.title}}
+			</li>
+			<li>
+				{{paidVoucherDetails?.voucher.voucher_unique_id}}
+			</li>
+			<li>
+				{{paidVoucherDetails?.voucher.terms_condition}}
+			</li>
+		</ul>
+		<ion-button (click)="redeemPaidVoucher(paidVoucherDetails?.id)"> Redeem </ion-button>
+	</ng-container>
+	<ng-container *ngIf="paidVoucherDet != ''">
+		<ul>
+			<li >
+				{{ paidVoucherDet.voucher_details.title }}
+			</li>
+			<li >
+				{{ paidVoucherDet.voucher_details.voucher_unique_id }}
+			</li>
+			<li >
+				{{ paidVoucherDet.voucher_details.terms_condition }}
+			</li>
+		</ul>
+		<ion-button (click)="redeemPaidVoucher(paidVoucherDet.id)"> Redeem </ion-button>
+	</ng-container>
+	<ion-button (click)="getUserdetails()" id="getDetails" style="display: none;"></ion-button>
+</ion-content>
