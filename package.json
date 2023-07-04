@@ -44,6 +44,7 @@
     "ng5-slider": "^1.2.6",
     "paulstelzer-ionic-angular-toolkit": "^2.0.0",
     "rxjs": "^6.5.5",
+    "sass": "^1.54.3",
     "tslib": "^1.14.1",
     "zone.js": "~0.8.29"
   },
@@ -96,7 +97,9 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-geolocation": {},
+      "cordova-plugin-geolocation": {
+        "GPS_REQUIRED": "true"
+      },
       "cordova-plugin-qrscanner": {},
       "cordova-plugin-vibration": {},
       "cordova-plugin-network-information": {},
